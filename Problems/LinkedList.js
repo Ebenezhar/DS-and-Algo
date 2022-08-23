@@ -92,6 +92,7 @@ class LinkedList {
       }
       console.log(current);
       current.next = current.next.next;
+      this.size--;
     } else if (i === 0) {
       this.deleteAtBegining();
     } else if (i === this.size - 1) {

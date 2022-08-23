@@ -92,6 +92,7 @@ class DoublyLinkedList {
       console.log(current);
       current.next = current.next.next;
       console.log(current.next.prev);
+      this.size--;
     }
   }
 
@@ -102,7 +103,6 @@ class DoublyLinkedList {
       str += current.data + " ";
       current = current.next;
     }
-    console.log(str);
   }
 
   printReverseList() {
