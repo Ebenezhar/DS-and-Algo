@@ -71,6 +71,7 @@ class DoublyLinkedList {
       current.next = null;
       this.last = current;
     }
+    this.size--;
   }
 
   deleteAtBegining() {
@@ -82,6 +83,7 @@ class DoublyLinkedList {
       this.head.prev = null;
       console.log(this.head);
     }
+    this.size--;
   }
 
   deleteBetween(i) {
