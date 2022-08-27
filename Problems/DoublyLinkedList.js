@@ -46,8 +46,9 @@ class DoublyLinkedList {
         current = current.next;
       }
       node.next = current.next;
-      current.next = node;
+      current.next.prev = node;
       node.prev = current;
+      current.next = node;
       this.size++;
     } else if (i == 0) {
       this.addAtbegining(data);
@@ -70,6 +71,7 @@ class DoublyLinkedList {
       current.next = null;
       this.last = current;
     }
+    this.size--;
   }
 
   deleteAtBegining() {
@@ -81,6 +83,7 @@ class DoublyLinkedList {
       this.head.prev = null;
       console.log(this.head);
     }
+    this.size--;
   }
 
   deleteBetween(i) {
@@ -89,10 +92,13 @@ class DoublyLinkedList {
       while (--i) {
         current = current.next;
       }
-      console.log(current);
-      current.next = current.next.next;
-      console.log(current.next.prev);
+      current.prev.next = current.next;
+      current.next.prev = current.prev;
       this.size--;
+    } else if (i == 0) {
+      this.deleteAtBegining();
+    } else if (i == this.size - 1) {
+      this.deleteAtEnd();
     }
   }
 
@@ -103,6 +109,7 @@ class DoublyLinkedList {
       str += current.data + " ";
       current = current.next;
     }
+    console.log(str);
   }
 
   printReverseList() {
@@ -123,11 +130,11 @@ dll.addAtEnd(30);
 dll.addAtEnd(40);
 dll.addAtEnd(50);
 dll.addAtEnd(60);
-dll.addAtbegining(1);
+// dll.addAtbegining(1);
 dll.printList();
-dll.insertBetween(3, 500);
-dll.printList();
-dll.deleteBetween(3);
+dll.insertBetween(2, 500);
+// dll.printList();
+dll.deleteBetween(4);
 dll.printList();
 // dll.deleteAtEnd();
 // dll.printList();
